@@ -1,0 +1,33 @@
+<style>
+	#wg-{{_.id}} {
+        display: flex;
+        align-items: center;
+        {{#if buttonAlignment.horizontal '===' 'center'}}
+            justify-content: center;
+        {{else if buttonAlignment.horizontal '===' 'left'}}
+            justify-content: flex-start;
+        {{else if buttonAlignment.horizontal '===' 'right'}}
+            justify-content: flex-end;
+        {{/if}}
+    }
+    
+    #wg-{{_.id}} .wg-button__inner {
+		margin-top: {{margin.top.value}}px;
+        margin-right: {{margin.right.value}}px;
+        margin-bottom: {{margin.bottom.value}}px;
+        margin-left: {{margin.left.value}}px;
+	}
+</style>
+
+<div id="wg-{{_.id}}" class='wg-button {{#if hideDesktop}}hide-d{{/if}} {{#if hideTablet}}hide-t{{/if}} {{#if hideMobile}}hide-m{{/if}}'>
+    
+    <div class="wg-button__inner"
+    {{#if animationStyle "!=" "none"}}
+        data-aos="{{animationStyle}}"
+        data-aos-duration="{{animationDuration.value}}"
+        data-aos-delay="{{animationDelay.value}}"
+    {{/if}}>    
+        <a class='button {{buttonStyle}}' href='{{buttonLink}}' {{#if buttonType "==" "download"}}download{{else}}target="{{buttonType}}"{{/if}}>{{buttonText}}</a>
+    </div>
+
+</div>

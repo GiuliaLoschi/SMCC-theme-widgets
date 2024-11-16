@@ -1,0 +1,132 @@
+[
+	{
+		"type": "tab",
+		"label": "Content",
+		"sections":[
+			{
+				"label": "Internal URL",
+				"settings": [
+					{
+						"type": "input",
+						"id": "internalUrl",
+						"label": "Video URL (WebDav)",
+						"default": "",
+						"typeMeta": {
+							"placeholder": "https://"
+						}
+					},
+					{
+						"type": "boolean",
+						"label": "Enable autoplay",
+						"id": "internalAutoplay",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Enable loop",
+						"id": "internalLoop",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Display video controls",
+						"id": "internalControls",
+						"default": true
+					}
+				]
+			},
+			{
+				"label": "External URL",
+				"settings": [
+					{
+                        "default": "",
+                        "id": "videoUrl",
+                        "label": "Video URL (YouTube, Vimeo, Google Drive)",
+                        "type": "regexInput",
+                        "typeMeta": {
+                            "placeholder": "https://",
+                            "regExPatterns": [
+                                {
+                                    "configKey": "id",
+                                    "matchIndex": 6,
+                                    "pattern": "(http:|https:|)//(player.|www.)?(vimeo\\.com|youtu(be\\.com|\\.be|be\\.googleapis\\.com)|drive\\.google\\.com)/(video/|embed/|watch\\?v=|v/|file/)?([A-Za-z0-9._%-]*)(\\&\\S+)?"
+                                },
+                                {
+                                    "configKey": "type",
+                                    "matchIndex": 0,
+                                    "pattern": "(vimeo|youtube|youtu|drive)"
+                                }
+                            ]
+                        }
+                    },
+					{
+                        "conditional": {
+                            "key": "videoUrl.parts.type",
+                            "operator": "IN",
+                            "value": [
+                                "youtube",
+                                "youtu"
+                            ]
+                        },
+                        "default": false,
+                        "id": "autoplay",
+                        "label": "Enable Autoplay",
+                        "type": "boolean"
+                    },
+                    {
+                        "conditional": {
+                            "key": "videoUrl.parts.type",
+                            "operator": "IN",
+                            "value": [
+                                "vimeo",
+                                "youtube",
+                                "youtu"
+                            ]
+                        },
+                        "default": false,
+                        "id": "loop",
+                        "label": "Enable loop",
+                        "type": "boolean"
+                    },
+					{
+                        "conditional": {
+                            "key": "videoUrl.parts.type",
+                            "operator": "IN",
+                            "value": [
+                                "youtube",
+                                "youtu"
+                            ]
+                        },
+                        "default": true,
+                        "id": "controls",
+                        "label": "Display video controls",
+                        "type": "boolean"
+                    }
+				]
+			},
+            {
+				"label": "Visibility",
+				"settings": [
+					{
+						"type": "boolean",
+						"label": "Hide for desktop",
+						"id": "hideDesktop",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for tablet",
+						"id": "hideTablet",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for mobile",
+						"id": "hideMobile",
+						"default": false
+					}
+				]
+			}
+		]
+	}
+]

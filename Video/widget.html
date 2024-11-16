@@ -1,0 +1,162 @@
+<div id="wg-{{_.id}}" class="wg-video {{#if hideDesktop}}hide-d{{/if}} {{#if hideTablet}}hide-t{{/if}} {{#if hideMobile}}hide-m{{/if}}">
+    {{#if videoUrl.value '===' ''}}
+        <style>
+            .invalid-input-{{_.id}} {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                background: #F6F7FC;
+                justify-content: center;
+                position: absolute;
+            }
+
+            .invalid-input-{{_.id}} > svg {
+                height: 100%;
+                width: 20%;
+            }
+
+            .invalid-input-{{_.id}} > svg > rect {
+                fill: #D9DCE9;
+            }
+
+            .invalid-input-{{_.id}} > svg > path {
+                fill: #FFFFFF;
+            }
+        </style>
+        <div class="invalid-input-{{_.id}}">
+            <!-- Waiting for input from user -->
+            <svg viewBox="0 0 182 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="182" height="114.947" rx="10"/>
+                <path d="M120.952 53.2903C122.425 54.0275 122.425 56.1302 120.952 56.8674L73.5397 80.591C72.2099 81.2564
+                 70.6448 80.2895 70.6448 78.8024V31.3552C70.6448 29.8682 72.2099 28.9012 73.5397 29.5667L120.952 53.2903Z"
+                />
+            </svg>
+        </div>
+    {{else}}
+        {{#unless videoUrl.parts.type}}
+            <style>
+                .invalid-input-{{_.id}} {
+                    text-align: center;
+                }
+            </style>
+            <div class="invalid-input-{{_.id}}">
+                <h3>Invalid URL entered</h3>
+            </div>
+        {{else}}
+            {{#unless videoUrl.parts.id}}
+            <style>
+                .invalid-input-{{_.id}} {
+                    text-align: center;
+                }
+            </style>
+            <div class="invalid-input-{{_.id}}">
+                <h3>Invalid URL entered</h3>
+            </div>
+            {{/unless}}
+        {{/unless}}
+    {{/if}}
+
+    {{#if internalUrl}}
+        <video id="internal-player-{{_.id}}" 
+            class="wg-video__player" 
+            type="video/mp4"
+            {{#if internalAutoplay}} autoplay muted{{/if}}
+            {{#if internalLoop}} loop{{/if}}
+            {{#if internalControls}}controls{{/if}} 
+            playsinline
+            src="{{internalUrl}}"></video>
+    {{else}}
+        {{#contains 'youtube' videoUrl.parts.type}}
+            {{#if videoUrl.parts.id}}
+                <iframe
+                    id="player-{{_.id}}"
+                    class="wg-video__player"
+                    type="text/html"
+                    src="https://www.youtube.com/embed/{{videoUrl.parts.id}}?enablejsapi=1&autoplay={{#if autoplay}}1{{else}}0{{/if}}&controls={{#if controls}}1{{else}}0{{/if}}&fs=1&loop={{#if loop}}1&playlist={{videoUrl.parts.id}}{{else}}0{{/if}}&rel=0&mute={{#if autoplay}}1{{else}}0{{/if}}"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
+                    {{#if _.pageBuilderData.previewState.editMode}}onload="initDevMode(this)"{{/if}}
+                ></iframe>
+            {{/if}}
+        {{/contains}}
+        {{#if videoUrl.parts.type '===' 'vimeo'}}
+            {{#if videoUrl.parts.id}}
+                <iframe
+                    id="player-{{_.id}}"
+                    class="wg-video__player"
+                    src="https://player.vimeo.com/video/{{videoUrl.parts.id}}?api=1&autoplay={{#if autoplay}}1{{else}}0{{/if}}&loop={{#if loop}}1{{else}}0{{/if}}"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
+                    {{#if _.pageBuilderData.previewState.editMode}}onload="initDevMode(this)"{{/if}}
+                ></iframe>
+            {{/if}}
+        {{/if}}
+        {{#if videoUrl.parts.type '===' 'drive'}}
+            <iframe
+                id="player-{{_.id}}"
+                class="wg-video__player"
+                src="{{videoUrl.value}}/preview"
+                frameborder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
+                allow="autoplay"
+                {{#if ../_.pageBuilderData.previewState.editMode}}onload="initDevMode(this)"{{/if}}
+            ></iframe>
+        {{/if}}
+    {{/if}}
+</div>
+
+{{#unless internalUrl}}
+<script type="text/javascript">
+    function devVideoPlayModes(iframe, data) {
+        if (data.editMode) {
+            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","method":"pause"}', '*');
+        } else {
+            var src = iframe.getAttribute('src');
+            var url = new URL(src);
+            var autoplay = new URLSearchParams(url.search).get('autoplay');
+            
+            if (autoplay === '1') {
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","method":"play"}', '*');
+            }
+
+        }
+    }
+
+    function initDevMode(iframe) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","method":"end"}', '*');
+    }
+
+    window.addEventListener('message', function load(event) {
+        try {
+            var data = JSON.parse(event.data);
+        } catch (e) { return; }
+
+        var iframe = document.querySelector('#player-{{_.id}}');
+        if (!iframe) {
+            window.removeEventListener('message', load);
+            return;
+        }
+
+        [{
+            action: 'toggle-edit-mode',
+            initiator: 'PAGE_BUILDER',
+            callback: devVideoPlayModes
+        }, {
+            action: 'sdk-loaded',
+            initiator: 'PAGE_BUILDER',
+            callback: initDevMode
+        }].forEach(function(handler) {
+            if (data.action === handler.action && data.initiator === handler.initiator) {
+                try { handler.callback(iframe, data); } catch (error) {}
+            }
+        })
+    });
+</script>
+{{/unless}}

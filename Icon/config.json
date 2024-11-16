@@ -1,0 +1,47 @@
+{
+  "icon": "check",
+  "color": "#444444",
+  "width": {
+    "value": 24,
+    "type": "px"
+  },
+  "align": {
+    "horizontal": "center"
+  },
+  "margin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "padding": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  }
+}

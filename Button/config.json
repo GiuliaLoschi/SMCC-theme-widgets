@@ -1,0 +1,33 @@
+{
+  "buttonText": "Button label",
+  "buttonAlignment": {
+    "horizontal": "center"
+  },
+  "buttonStyle": "button--primary",
+  "buttonType": "_self",
+  "margin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "animationStyle": "none",
+  "animationDuration": {
+    "value": 2000
+  },
+  "animationDelay": {
+    "value": 0
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Hero Box Title",
+  "subtitle": "Add a description for this hero box. This is a great place to highlight a promotion.",
+  "heroSize": "small",
+  "contentAlignment": {
+    "horizontal": "left",
+    "vertical": "middle"
+  },
+  "contentSpacing": {
+    "padding": {
+      "top": {
+        "value": "20",
+        "type": "px"
+      },
+      "right": {
+        "value": "20",
+        "type": "px"
+      },
+      "bottom": {
+        "value": "20",
+        "type": "px"
+      },
+      "left": {
+        "value": "20",
+        "type": "px"
+      }
+    },
+    "margin": {
+      "top": {
+        "value": "0",
+        "type": "px"
+      },
+      "right": {
+        "value": "0",
+        "type": "px"
+      },
+      "bottom": {
+        "value": "0",
+        "type": "px"
+      },
+      "left": {
+        "value": "0",
+        "type": "px"
+      }
+    }
+  },
+  "contentAnimation": {
+    "style": "none",
+    "duration": {
+      "value": 2000,
+      "type": "ms"
+    },
+    "delay": {
+      "value": 0,
+      "type": "ms"
+    }
+  },
+  "backgroundType": "image",
+  "backgroundColor": "#444444",
+  "imageFit": "cover",
+  "videoAuotoplay": true,
+  "videoLoop": true,
+  "desktopImage": {
+    "image": {
+      "src": "https://picsum.photos/id/352/1920/650",
+      "type": "IMAGE_MANAGER"
+    },
+    "alignment": {
+      "horizontal": "center",
+      "vertical": "middle"
+    }
+  },
+  "tabletImage": {
+    "loadImage": "hide",
+    "image": {
+      "src": "",
+      "type": "IMAGE_MANAGER"
+    },
+    "alignment": {
+      "horizontal": "center",
+      "vertical": "middle"
+    }
+  },
+  "mobileImage": {
+    "loadImage": "hide",
+    "image": {
+      "src": "",
+      "type": "IMAGE_MANAGER"
+    },
+    "alignment": {
+      "horizontal": "center",
+      "vertical": "middle"
+    }
+  },
+  "overlayOpacity": 20,
+  "overlayColor": "transparent",
+  "elemTitle": {
+    "visibility": "show",
+    "titleColor": "#FF6600"
+  },
+  "elemSubtitle": {
+    "visibility": "show",
+    "subtitleColor": "#ffffff"
+  },
+  "elemButton": {
+    "visibility": "show",
+    "buttonText": "Button",
+    "buttonLink": "",
+    "buttonStyle": "button--secondary"
+  },
+  "animationStyle": "none",
+  "animationDuration": {
+    "value": 2000
+  },
+  "animationDelay": {
+    "value": 0
+  }
+}

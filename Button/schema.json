@@ -1,0 +1,277 @@
+[
+	{
+		"type": "tab",
+		"label": "Design",
+		"sections": [
+			{
+				"label": "Button",
+				"settings": [
+					{
+						"type": "input",
+						"id": "buttonText",
+						"label": "Button label",
+						"default": "Button label"
+					},
+					{
+						"type": "input",
+						"id": "buttonLink",
+						"label": "Button link",
+						"default": "",
+						"typeMeta": {
+							"placeholder": "https://"
+						}
+					},
+					{
+						"type": "alignment",
+						"label": "Button align",
+						"id": "buttonAlignment",
+						"default": {
+							"horizontal": "center"
+						},
+						"typeMeta": {
+							"display": "horizontal"
+						}
+					},
+					{
+						"type": "select",
+						"label": "Button style",
+						"id": "buttonStyle",
+						"default": "button--primary",
+						"typeMeta": {
+							"selectOptions": [
+								{
+									"label": "Primary",
+									"value": "button--primary"
+								},
+								{
+									"label": "Secondary",
+									"value": "button--secondary"
+								},
+								{
+									"label": "Tertiary",
+									"value": "button--tertiary"
+								}
+							]
+						}
+					},
+					{
+						"type": "select",
+						"label": "Button type",
+						"id": "buttonType",
+						"default": "_self",
+						"typeMeta": {
+							"selectOptions": [
+								{
+									"label": "Same window",
+									"value": "_self"
+								},
+								{
+									"label": "New window",
+									"value": "_blank"
+								},
+								{
+									"label": "Download file",
+									"value": "download"
+								}
+							]
+						}
+					}
+				]
+			},
+			{
+				"label": "Spacing",
+				"settings": [
+					{
+						"type": "boxModel",
+						"label": "Margin (px)",
+						"id": "margin",
+						"default": {
+							"top": {
+								"value": "0",
+								"type": "px"
+							},
+							"right": {
+								"value": "0",
+								"type": "px"
+							},
+							"bottom": {
+								"value": "0",
+								"type": "px"
+							},
+							"left": {
+								"value": "0",
+								"type": "px"
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Animation",
+				"settings": [
+					{
+						"type": "select",
+						"id": "animationStyle",
+						"label": "Style",
+						"default": "none",
+						"typeMeta": {
+							"selectOptions": [
+								{
+									"label": "none",
+									"value": "none"
+								},
+								{
+									"label": "Fade",
+									"value": "fade"
+								},
+								{
+									"label": "Fade Up",
+									"value": "fade-up"
+								},
+								{
+									"label": "Fade Down",
+									"value": "fade-down"
+								},
+								{
+									"label": "Fade Right",
+									"value": "fade-right"
+								},
+								{
+									"label": "Fade Left",
+									"value": "fade-left"
+								},
+								{
+									"label": "Fade Up Right",
+									"value": "fade-up-right"
+								},
+								{
+									"label": "Fade Up Left",
+									"value": "fade-up-left"
+								},
+								{
+									"label": "Fade Down Right",
+									"value": "fade-down-right"
+								},
+								{
+									"label": "Fade Down Left",
+									"value": "fade-down-left"
+								},
+								{
+									"label": "Flip Up",
+									"value": "flip-up"
+								},
+								{
+									"label": "Flip Down",
+									"value": "flip-down"
+								},
+								{
+									"label": "Flip Right",
+									"value": "flip-right"
+								},
+								{
+									"label": "Flip Left",
+									"value": "flip-left"
+								},
+								{
+									"label": "Slide Up",
+									"value": "slide-up"
+								},
+								{
+									"label": "Slide Down",
+									"value": "slide-down"
+								},
+								{
+									"label": "Slide Left",
+									"value": "slide-left"
+								},
+								{
+									"label": "Slide Right",
+									"value": "slide-right"
+								},
+								{
+									"label": "Zoom In",
+									"value": "zoom-in"
+								},
+								{
+									"label": "Zoom In Up",
+									"value": "zoom-in-up"
+								},
+								{
+									"label": "Zoom In Down",
+									"value": "zoom-in-down"
+								},
+								{
+									"label": "Zoom In Right",
+									"value": "zoom-in-right"
+								},
+								{
+									"label": "Zoom In Left",
+									"value": "zoom-in-left"
+								},
+								{
+									"label": "Zoom Out",
+									"value": "zoom-out"
+								},
+								{
+									"label": "Zoom Out Up",
+									"value": "zoom-out-up"
+								},
+								{
+									"label": "Zoom Out Down",
+									"value": "zoom-out-down"
+								},
+								{
+									"label": "Zoom Out Right",
+									"value": "zoom-out-right"
+								},
+								{
+									"label": "Zoom Out Left",
+									"value": "zoom-out-left"
+								}
+							]
+						}
+					},
+					{
+						"type": "number",
+						"id": "animationDuration",
+						"label": "Duration (ms)",
+						"default": {
+							"value": 2000
+						}
+					},
+					{
+						"type": "number",
+						"id": "animationDelay",
+						"label": "Delay (ms)",
+						"default": {
+							"value": 0
+						}
+					}
+				]
+			},
+			{
+				"label": "Visibility",
+				"settings": [
+					{
+						"type": "boolean",
+						"label": "Hide for desktop",
+						"id": "hideDesktop",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for tablet",
+						"id": "hideTablet",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for mobile",
+						"id": "hideMobile",
+						"default": false
+					}
+				]
+			}
+		]
+	}
+]

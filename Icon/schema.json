@@ -1,0 +1,90 @@
+[
+  {
+    "type": "tab",
+    "label": "Design",
+    "sections": [
+      {
+        "settings": [
+          {
+            "type": "input",
+            "id": "icon",
+            "label": "Icon name",
+            "default": "check"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Icon Color",
+            "default": "#E95F0E"
+          },
+          {
+            "type": "number",
+            "id": "width",
+            "label": "Icon Width",
+            "default": {
+              "value": 40,
+              "type": "px"
+            }
+          },
+          {
+            "type": "alignment",
+            "label": "Icon Alignment",
+            "id": "align",
+            "default": {
+              "horizontal": "center"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          },
+          {
+            "type": "boxModel",
+            "label": "Margin",
+            "id": "margin",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "boxModel",
+            "label": "Padding",
+            "id": "padding",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

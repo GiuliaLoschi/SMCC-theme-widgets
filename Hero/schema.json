@@ -1,0 +1,879 @@
+[
+  {
+    "type": "hidden",
+    "settings": [
+      {
+        "id": "title",
+        "default": "Hero Box Title"
+      },
+      {
+        "id": "subtitle",
+        "default": "Add a description for this hero box. This is a great place to highlight a promotion."
+      }
+    ]
+  },
+  {
+    "type": "tab",
+    "label": "Content",
+    "sections": [
+      {
+        "label": "Settings",
+        "settings": [
+          {
+            "default": "small",
+            "id": "heroSize",
+            "label": "Hero size",
+            "type": "select",
+            "typeMeta": {
+              "selectOptions": [
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "Small",
+                  "value": "small"
+                },
+                {
+                  "label": "Medium",
+                  "value": "medium"
+                },
+                {
+                  "label": "Large",
+                  "value": "large"
+                },
+                {
+                  "label": "Full",
+                  "value": "full"
+                }
+              ]
+            }
+          },
+          {
+            "type": "alignment",
+            "label": "Content Alignment",
+            "id": "contentAlignment",
+            "default": {
+              "horizontal": "left",
+              "vertical": "middle"
+            },
+            "typeMeta": {
+              "display": "both"
+            }
+          },
+          {
+            "type": "element",
+            "label": "Content spacing",
+            "id": "contentSpacing",
+            "typeMeta": {
+              "controls": {
+                "advanced": {
+                  "label": "Content spacing settings",
+                  "settings": [
+                    {
+                      "type": "boxModel",
+                      "label": "Padding (px)",
+                      "id": "padding",
+                      "default": {
+                        "top": {
+                          "value": "20",
+                          "type": "px"
+                        },
+                        "right": {
+                          "value": "20",
+                          "type": "px"
+                        },
+                        "bottom": {
+                          "value": "20",
+                          "type": "px"
+                        },
+                        "left": {
+                          "value": "20",
+                          "type": "px"
+                        }
+                      }
+                    },
+                    {
+                      "type": "boxModel",
+                      "label": "Margin (px)",
+                      "id": "margin",
+                      "default": {
+                        "top": {
+                          "value": "0",
+                          "type": "px"
+                        },
+                        "right": {
+                          "value": "0",
+                          "type": "px"
+                        },
+                        "bottom": {
+                          "value": "0",
+                          "type": "px"
+                        },
+                        "left": {
+                          "value": "0",
+                          "type": "px"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "element",
+            "label": "Content animation",
+            "id": "contentAnimation",
+            "typeMeta": {
+              "controls": {
+                "advanced": {
+                  "label": "Content animation settings",
+                  "settings": [
+                    {
+                      "type": "select",
+                      "id": "style",
+                      "label": "Style",
+                      "default": "none",
+                      "typeMeta": {
+                        "selectOptions": [
+                          {
+                            "label": "none",
+                            "value": "none"
+                          },
+                          {
+                            "label": "Fade Up",
+                            "value": "fade-up"
+                          },
+                          {
+                            "label": "Fade Down",
+                            "value": "fade-down"
+                          },
+                          {
+                            "label": "Fade Right",
+                            "value": "fade-right"
+                          },
+                          {
+                            "label": "Fade Left",
+                            "value": "fade-left"
+                          },
+                          {
+                            "label": "Fade Up Right",
+                            "value": "fade-up-right"
+                          },
+                          {
+                            "label": "Fade Up Left",
+                            "value": "fade-up-left"
+                          },
+                          {
+                            "label": "Fade Down Right",
+                            "value": "fade-down-right"
+                          },
+                          {
+                            "label": "Fade Down Left",
+                            "value": "fade-down-left"
+                          },
+                          {
+                            "label": "Flip Up",
+                            "value": "flip-up"
+                          },
+                          {
+                            "label": "Flip Down",
+                            "value": "flip-down"
+                          },
+                          {
+                            "label": "Flip Right",
+                            "value": "flip-right"
+                          },
+                          {
+                            "label": "Flip Left",
+                            "value": "flip-left"
+                          },
+                          {
+                            "label": "Zoom In",
+                            "value": "zoom-in"
+                          },
+                          {
+                            "label": "Zoom In Up",
+                            "value": "zoom-in-up"
+                          },
+                          {
+                            "label": "Zoom In Down",
+                            "value": "zoom-in-down"
+                          },
+                          {
+                            "label": "Zoom In Right",
+                            "value": "zoom-in-right"
+                          },
+                          {
+                            "label": "Zoom In Left",
+                            "value": "zoom-in-left"
+                          },
+                          {
+                            "label": "Zoom Out",
+                            "value": "zoom-out"
+                          },
+                          {
+                            "label": "Zoom Out Up",
+                            "value": "zoom-out-up"
+                          },
+                          {
+                            "label": "Zoom Out Down",
+                            "value": "zoom-out-down"
+                          },
+                          {
+                            "label": "Zoom Out Right",
+                            "value": "zoom-out-right"
+                          },
+                          {
+                            "label": "Zoom Out Left",
+                            "value": "zoom-out-left"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "number",
+                      "id": "duration",
+                      "label": "Duration",
+                      "default": {
+                        "value": 2000,
+                        "type": "ms"
+                      }
+                    },
+                    {
+                      "type": "number",
+                      "id": "delay",
+                      "label": "Delay",
+                      "default": {
+                        "value": 0,
+                        "type": "ms"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Background",
+        "settings": [
+          {
+            "default": "image",
+            "id": "backgroundType",
+            "label": "Background",
+            "type": "select",
+            "typeMeta": {
+              "selectOptions": [
+                {
+                  "label": "Image",
+                  "value": "image"
+                },
+                {
+                  "label": "Color",
+                  "value": "color"
+                },
+                {
+                  "label": "Video",
+                  "value": "video"
+                }
+              ]
+            }
+          },
+          {
+            "type": "color",
+            "id": "backgroundColor",
+            "label": "Background color",
+            "default": "#444444",
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "color"
+              ]
+            }
+          },
+          {
+            "id": "imageFit",
+            "label": "Image fit",
+            "type": "select",
+            "default": "cover",
+            "typeMeta": {
+              "selectOptions": [
+                {
+                  "label": "Fill to box",
+                  "value": "cover"
+                },
+                {
+                  "label": "Fit to box",
+                  "value": "contain"
+                },
+                {
+                  "label": "Parallax",
+                  "value": "parallax"
+                }
+              ]
+            },
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "image"
+              ]
+            }
+          },
+          {
+            "type": "input",
+            "id": "videoUrl",
+            "label": "Video URL",
+            "typeMeta": {
+              "placeholder": "https://"
+            },
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "video"
+              ]
+            }
+          },
+          {
+            "type": "boolean",
+            "label": "Enable autoplay",
+            "id": "videoAuotoplay",
+            "default": true,
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "video"
+              ]
+            }
+          },
+          {
+            "type": "boolean",
+            "label": "Enable loop",
+            "id": "videoLoop",
+            "default": true,
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "video"
+              ]
+            }
+          },
+          {
+            "type": "element",
+            "label": "Desktop Image",
+            "id": "desktopImage",
+            "typeMeta": {
+              "controls": {
+                "advanced": {
+                  "label": "Desktop image settings",
+                  "settings": [
+                    {
+                      "type": "imageManager",
+                      "id": "image",
+                      "label": "Image",
+                      "default": {
+                        "src": "https://picsum.photos/id/352/1920/650",
+                        "type": "IMAGE_MANAGER"
+                      }
+                    },
+                    {
+                      "type": "alignment",
+                      "label": "Alignment",
+                      "id": "alignment",
+                      "default": {
+                        "horizontal": "center",
+                        "vertical": "middle"
+                      },
+                      "typeMeta": {
+                        "display": "both"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "image"
+              ]
+            }
+          },
+          {
+            "type": "element",
+            "label": "Tablet image",
+            "id": "tabletImage",
+            "typeMeta": {
+              "controls": {
+                "advanced": {
+                  "label": "Tablet image settings",
+                  "settings": [
+                    {
+                      "type": "visibility",
+                      "label": "Load tablet image",
+                      "id": "loadImage",
+                      "default": "hide"
+                    },
+                    {
+                      "type": "imageManager",
+                      "id": "image",
+                      "label": "Image",
+                      "default": {
+                        "src": "",
+                        "type": "IMAGE_MANAGER"
+                      },
+                      "conditional": {
+                        "key": "loadImage",
+                        "operator": "IN",
+                        "value": [
+                          "show"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "alignment",
+                      "label": "Alignment",
+                      "id": "alignment",
+                      "default": {
+                        "horizontal": "center",
+                        "vertical": "middle"
+                      },
+                      "typeMeta": {
+                        "display": "both"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "image"
+              ]
+            }
+          },
+          {
+            "type": "element",
+            "label": "Mobile image",
+            "id": "mobileImage",
+            "typeMeta": {
+              "controls": {
+                "advanced": {
+                  "label": "Mobile image settings",
+                  "settings": [
+                    {
+                      "type": "visibility",
+                      "label": "Load mobile image",
+                      "id": "loadImage",
+                      "default": "hide"
+                    },
+                    {
+                      "type": "imageManager",
+                      "id": "image",
+                      "label": "Image",
+                      "default": {
+                        "src": "",
+                        "type": "IMAGE_MANAGER"
+                      },
+                      "conditional": {
+                        "key": "loadImage",
+                        "operator": "IN",
+                        "value": [
+                          "show"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "alignment",
+                      "label": "Alignment",
+                      "id": "alignment",
+                      "default": {
+                        "horizontal": "center",
+                        "vertical": "middle"
+                      },
+                      "typeMeta": {
+                        "display": "both"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "image"
+              ]
+            }
+          },
+          {
+            "default": 20,
+            "id": "overlayOpacity",
+            "label": "Overlay opacity",
+            "type": "range",
+            "typeMeta": {
+              "rangeValues": {
+                "max": 100,
+                "min": 0,
+                "step": 1,
+                "unit": "%"
+              }
+            },
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "image",
+                "video"
+              ]
+            }
+          },
+          {
+            "type": "color",
+            "label": "Overlay color",
+            "id": "overlayColor",
+            "default": "transparent",
+            "conditional": {
+              "key": "backgroundType",
+              "operator": "IN",
+              "value": [
+                "image",
+                "video"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Text",
+        "settings": [
+          {
+            "type": "element",
+            "label": "Title",
+            "id": "elemTitle",
+            "typeMeta": {
+              "controls": {
+                "visibility": {
+                  "default": "show"
+                },
+                "advanced": {
+                  "label": "Title settings",
+                  "settings": [
+                    {
+                      "type": "number",
+                      "label": "Font size",
+                      "id": "fontSize",
+                      "default": {
+                        "value": 45,
+                        "type": "px"
+                      },
+                      "typeMeta": {
+                        "parseType": "integer"
+                      }
+                    },
+                    {
+                      "type": "number",
+                      "label": "Line height",
+                      "id": "lineHeight",
+                      "default": {
+                        "value": 48,
+                        "type": "px"
+                      },
+                      "typeMeta": {
+                        "parseType": "integer"
+                      }
+                    },
+                    {
+                      "type": "color",
+                      "label": "Title color",
+                      "id": "titleColor",
+                      "default": "#FF6600"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "element",
+            "label": "Subtitle",
+            "id": "elemSubtitle",
+            "typeMeta": {
+              "controls": {
+                "visibility": {
+                  "default": "show"
+                },
+                "advanced": {
+                  "label": "Subtitle settings",
+                  "settings": [
+                    {
+                      "type": "number",
+                      "label": "Font size",
+                      "id": "fontSize",
+                      "default": {
+                        "value": 20,
+                        "type": "px"
+                      },
+                      "typeMeta": {
+                        "parseType": "integer"
+                      }
+                    },
+                    {
+                      "type": "number",
+                      "label": "Line height",
+                      "id": "lineHeight",
+                      "default": {
+                        "value": 25,
+                        "type": "px"
+                      },
+                      "typeMeta": {
+                        "parseType": "integer"
+                      }
+                    },
+                    {
+                      "type": "color",
+                      "label": "Subtitle color",
+                      "id": "subtitleColor",
+                      "default": "#ffffff"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "element",
+            "label": "Button",
+            "id": "elemButton",
+            "typeMeta": {
+              "controls": {
+                "visibility": {
+                  "default": "show"
+                },
+                "advanced": {
+                  "label": "Subtitle settings",
+                  "settings": [
+                    {
+                      "type": "input",
+                      "id": "buttonText",
+                      "label": "Label",
+                      "default": "Button"
+                    },
+                    {
+                      "type": "input",
+                      "id": "buttonLink",
+                      "label": "Link",
+                      "default": "",
+                      "typeMeta": {
+                        "placeholder": "https://"
+                      }
+                    },
+                    {
+                      "type": "select",
+                      "label": "Style",
+                      "id": "buttonStyle",
+                      "default": "button--secondary",
+                      "typeMeta": {
+                        "selectOptions": [
+                          {
+                            "label": "Primary",
+                            "value": "button--primary"
+                          },
+                          {
+                            "label": "Secondary",
+                            "value": "button--secondary"
+                          },
+                          {
+                            "label": "Tertiary",
+                            "value": "button--tertiary"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Animation",
+        "settings": [
+          {
+            "type": "select",
+            "id": "animationStyle",
+            "label": "Style",
+            "default": "none",
+            "typeMeta": {
+              "selectOptions": [
+                {
+                  "label": "none",
+                  "value": "none"
+                },
+                {
+                  "label": "Fade",
+                  "value": "fade"
+                },
+                {
+                  "label": "Fade Up",
+                  "value": "fade-up"
+                },
+                {
+                  "label": "Fade Down",
+                  "value": "fade-down"
+                },
+                {
+                  "label": "Fade Right",
+                  "value": "fade-right"
+                },
+                {
+                  "label": "Fade Left",
+                  "value": "fade-left"
+                },
+                {
+                  "label": "Fade Up Right",
+                  "value": "fade-up-right"
+                },
+                {
+                  "label": "Fade Up Left",
+                  "value": "fade-up-left"
+                },
+                {
+                  "label": "Fade Down Right",
+                  "value": "fade-down-right"
+                },
+                {
+                  "label": "Fade Down Left",
+                  "value": "fade-down-left"
+                },
+                {
+                  "label": "Flip Up",
+                  "value": "flip-up"
+                },
+                {
+                  "label": "Flip Down",
+                  "value": "flip-down"
+                },
+                {
+                  "label": "Flip Right",
+                  "value": "flip-right"
+                },
+                {
+                  "label": "Flip Left",
+                  "value": "flip-left"
+                },
+                {
+                  "label": "Slide Up",
+                  "value": "slide-up"
+                },
+                {
+                  "label": "Slide Down",
+                  "value": "slide-down"
+                },
+                {
+                  "label": "Slide Left",
+                  "value": "slide-left"
+                },
+                {
+                  "label": "Slide Right",
+                  "value": "slide-right"
+                },
+                {
+                  "label": "Zoom In",
+                  "value": "zoom-in"
+                },
+                {
+                  "label": "Zoom In Up",
+                  "value": "zoom-in-up"
+                },
+                {
+                  "label": "Zoom In Down",
+                  "value": "zoom-in-down"
+                },
+                {
+                  "label": "Zoom In Right",
+                  "value": "zoom-in-right"
+                },
+                {
+                  "label": "Zoom In Left",
+                  "value": "zoom-in-left"
+                },
+                {
+                  "label": "Zoom Out",
+                  "value": "zoom-out"
+                },
+                {
+                  "label": "Zoom Out Up",
+                  "value": "zoom-out-up"
+                },
+                {
+                  "label": "Zoom Out Down",
+                  "value": "zoom-out-down"
+                },
+                {
+                  "label": "Zoom Out Right",
+                  "value": "zoom-out-right"
+                },
+                {
+                  "label": "Zoom Out Left",
+                  "value": "zoom-out-left"
+                }
+              ]
+            }
+          },
+          {
+            "type": "number",
+            "id": "animationDuration",
+            "label": "Duration (ms)",
+            "default": {
+              "value": 2000
+            }
+          },
+          {
+            "type": "number",
+            "id": "animationDelay",
+            "label": "Delay (ms)",
+            "default": {
+              "value": 0
+            }
+          }
+        ]
+      },
+      {
+        "label": "Visibility",
+        "settings": [
+          {
+            "type": "boolean",
+            "label": "Hide for desktop",
+            "id": "hideDesktop",
+            "default": false
+          },
+          {
+            "type": "boolean",
+            "label": "Hide for tablet",
+            "id": "hideTablet",
+            "default": false
+          },
+          {
+            "type": "boolean",
+            "label": "Hide for mobile",
+            "id": "hideMobile",
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+]

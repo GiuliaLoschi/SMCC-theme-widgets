@@ -1,0 +1,535 @@
+[
+  {
+    "type": "array",
+    "label": "Gallery",
+    "id": "slides",
+    "defaultCount": 2,
+    "entryLabel": "Slide",
+    "thumbnail": {
+      "type": "image",
+      "valueKey": "desktopImage.image.src"
+    },
+    "schema": [
+      {
+        "type": "tab",
+        "label": "Content",
+        "sections": [
+          {
+            "settings": [
+              {
+                "default": "image",
+                "id": "mediaType",
+                "label": "Media",
+                "type": "select",
+                "typeMeta": {
+                  "selectOptions": [
+                    {
+                      "label": "Image",
+                      "value": "image"
+                    },
+                    {
+                      "label": "Video",
+                      "value": "video"
+                    }      
+                ]
+              }
+            },
+            {
+              "default": "",
+              "id": "videoUrl",
+              "label": "Video URL (YouTube, Vimeo, Google Drive)",
+              "type": "regexInput",
+              "typeMeta": {
+                "placeholder": "https://",
+                "regExPatterns": [
+                  {
+                    "configKey": "id",
+                    "matchIndex": 6,
+                    "pattern": "(http:|https:|)//(player.|www.)?(vimeo\\.com|youtu(be\\.com|\\.be|be\\.googleapis\\.com)|drive\\.google\\.com)/(video/|embed/|watch\\?v=|v/|file/)?([A-Za-z0-9._%-]*)(\\&\\S+)?"
+                  },
+                  {
+                    "configKey": "type",
+                    "matchIndex": 0,
+                    "pattern": "(vimeo|youtube|youtu|drive)"
+                  }
+                ]
+              },
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "video"
+                ]
+              }
+            },            
+            {
+              "type": "input",
+              "id": "videoUrlDav",
+              "label": "Video URL Download (WebDav)",
+              "typeMeta": {
+                "placeholder": "https://"
+              },
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "video"
+                ]
+              }
+            },
+            {
+              "type": "boolean",
+              "label": "Enable autoplay",
+              "id": "autoplay",
+              "default": false,
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "video"
+                ]
+              }
+            },
+            {
+              "type": "boolean",
+              "label": "Enable loop",
+              "id": "loop",
+              "default": false,
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "video"
+                ]
+              }
+            },
+            {
+              "type": "boolean",
+              "label": "Enable controls",
+              "id": "controls",
+              "default": true,
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "video"
+                ]
+              }
+            },
+            {
+              "type": "element",
+              "label": "Desktop Image",
+              "id": "desktopImage",
+              "typeMeta": {
+                "controls": {
+                  "advanced": {
+                    "label": "Desktop image settings",
+                    "settings": [
+                      {
+                        "type": "imageManager",
+                        "id": "image",
+                        "label": "Image",
+                        "default": {
+                          "src": "https://picsum.photos/id/352/1920/650",
+                          "type": "IMAGE_MANAGER"
+                        }
+                      },
+                      {
+                        "type": "alignment",
+                        "label": "Alignment",
+                        "id": "alignment",
+                        "default": {
+                          "horizontal": "center"
+                        },
+                        "typeMeta": {
+                          "display": "horizontal"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "image"
+                ]
+              }
+            },
+            {
+              "type": "element",
+              "label": "Tablet image",
+              "id": "tabletImage",
+              "typeMeta": {
+                "controls": {
+                  "advanced": {
+                    "label": "Tablet image settings",
+                    "settings": [
+                      {
+                        "type": "visibility",
+                        "label": "Load tablet image",
+                        "id": "loadImage",
+                        "default": "hide"
+                      },
+                      {
+                        "type": "imageManager",
+                        "id": "image",
+                        "label": "Image",
+                        "default": {
+                          "src": "",
+                          "type": "IMAGE_MANAGER"
+                        },
+                        "conditional": {
+                          "key": "loadImage",
+                          "operator": "IN",
+                          "value": [
+                            "show"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "alignment",
+                        "label": "Alignment",
+                        "id": "alignment",
+                        "default": {
+                          "horizontal": "center"
+                        },
+                        "typeMeta": {
+                          "display": "horizontal"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "image"
+                ]
+              }
+            },
+            {
+              "type": "element",
+              "label": "Mobile image",
+              "id": "mobileImage",
+              "typeMeta": {
+                "controls": {
+                  "advanced": {
+                    "label": "Mobile image settings",
+                    "settings": [
+                      {
+                        "type": "visibility",
+                        "label": "Load mobile image",
+                        "id": "loadImage",
+                        "default": "hide"
+                      },
+                      {
+                        "type": "imageManager",
+                        "id": "image",
+                        "label": "Image",
+                        "default": {
+                          "src": "",
+                          "type": "IMAGE_MANAGER"
+                        },
+                        "conditional": {
+                          "key": "loadImage",
+                          "operator": "IN",
+                          "value": [
+                            "show"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "alignment",
+                        "label": "Alignment",
+                        "id": "alignment",
+                        "default": {
+                          "horizontal": "center"
+                        },
+                        "typeMeta": {
+                          "display": "horizontal"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "conditional": {
+                "key": "mediaType",
+                "operator": "IN",
+                "value": [
+                  "image"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
+  "type": "tab",
+  "label": "Content",
+  "sections": [
+    {
+      "label": "Carousel",
+      "settings": [
+        {
+          "type": "boolean",
+          "label": "Show download button",
+          "id": "download",
+          "default": true
+        },
+        {
+          "type": "boolean",
+          "label": "Show dots",
+          "id": "dots",
+          "default": true
+        },
+        {
+          "type": "boolean",
+          "label": "Show arrows",
+          "id": "arrows",
+          "default": true
+        },
+        {
+          "type": "boolean",
+          "label": "Enable infinite loop",
+          "id": "infinite",
+          "default": false
+        },
+        {
+          "type": "boolean",
+          "label": "Enable autoplay",
+          "id": "autoplay",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "autoplaySpeed",
+          "label": "Autoplay speed",
+          "default": {
+            "value": 2000,
+            "type": "ms"
+          },
+          "conditional": {
+            "key": "autoplay",
+            "operator": "IN",
+            "value": [
+              true
+            ]
+          }
+        },
+        {
+          "type": "number",
+          "id": "slidesToShow",
+          "label": "Slides to show",
+          "default": {
+            "value": 1,
+            "type": "#"
+          }
+        },
+        {
+          "type": "number",
+          "id": "slidesToScroll",
+          "label": "Slides to scroll",
+          "default": {
+            "value": 1,
+            "type": "#"
+          }
+        },
+        {
+          "type": "number",
+          "id": "slidesHeight",
+          "label": "Slides Height",
+          "default": {
+            "value": 600,
+            "type": "px"
+          }
+        },  
+        {
+          "type": "boolean",
+          "label": "Enable responsive settings",
+          "id": "responsive",
+          "default": true
+        },
+        {
+          "type": "element",
+          "label": "Tablet settings",
+          "id": "tablet",
+          "typeMeta": {
+            "controls": {
+              "visibility": {
+                "default": "show"
+              },
+              "advanced": {
+                "label": "Tablet settings",
+                "settings": [
+                  {
+                    "type": "number",
+                    "id": "slidesHeight",
+                    "label": "Slides Height",
+                    "default": {
+                      "value": 400,
+                      "type": "px"
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "id": "breakpoint",
+                    "label": "Breakpoint",
+                    "default": {
+                      "value": 990,
+                      "type": "px"
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "id": "slidesToShow",
+                    "label": "Slides to show",
+                    "default": {
+                      "value": 2,
+                      "type": "#"
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "id": "slidesToScroll",
+                    "label": "Slides to scroll",
+                    "default": {
+                      "value": 1,
+                      "type": "#"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "conditional": {
+            "key": "responsive",
+            "operator": "IN",
+            "value": [
+              true
+            ]
+          }
+        },
+        {
+          "type": "element",
+          "label": "Mobile settings",
+          "id": "mobile",
+          "typeMeta": {
+            "controls": {
+              "visibility": {
+                "default": "show"
+              },
+              "advanced": {
+                "label": "Mobile settings",
+                "settings": [
+                  {
+                    "type": "number",
+                    "id": "slidesHeight",
+                    "label": "Slides Height",
+                    "default": {
+                      "value": 400,
+                      "type": "px"
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "id": "breakpoint",
+                    "label": "Breakpoint",
+                    "default": {
+                      "value": 500,
+                      "type": "px"
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "id": "slidesToShow",
+                    "label": "Slides to show",
+                    "default": {
+                      "value": 1,
+                      "type": "#"
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "id": "slidesToScroll",
+                    "label": "Slides to scroll",
+                    "default": {
+                      "value": 1,
+                      "type": "#"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "conditional": {
+            "key": "responsive",
+            "operator": "IN",
+            "value": [
+              true
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Spacing",
+      "settings": [
+        {
+          "type": "boxModel",
+          "label": "Margin (px)",
+          "id": "margin",
+          "default": {
+            "top": {
+              "value": "0",
+              "type": "px"
+            },
+            "right": {
+              "value": "0",
+              "type": "px"
+            },
+            "bottom": {
+              "value": "0",
+              "type": "px"
+            },
+            "left": {
+              "value": "0",
+              "type": "px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "Visibility",
+      "settings": [
+        {
+          "type": "boolean",
+          "label": "Hide for desktop",
+          "id": "hideDesktop",
+          "default": false
+        },
+        {
+          "type": "boolean",
+          "label": "Hide for tablet",
+          "id": "hideTablet",
+          "default": false
+        },
+        {
+          "type": "boolean",
+          "label": "Hide for mobile",
+          "id": "hideMobile",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
+]

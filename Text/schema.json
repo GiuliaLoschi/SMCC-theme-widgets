@@ -1,0 +1,494 @@
+[
+	{
+		"type": "hidden",
+		"settings": [
+			{
+				"id": "textContent",
+				"default": "You can use this widget to input text into the page."
+			}
+		]
+	},
+	{
+		"type": "tab",
+		"label": "Design",
+		"sections": [
+			{
+				"settings": [
+					{
+						"type": "select",
+						"label": "Text style",
+						"id": "textStyle",
+						"default": "p-style",
+						"typeMeta": {
+							"selectOptions": [
+								{
+									"label": "Paragraph",
+									"value": "p-style"
+								},
+								{
+									"label": "Heading 1",
+									"value": "h1-style"
+								},
+								{
+									"label": "Heading 2",
+									"value": "h2-style"
+								},
+								{
+									"label": "Heading 3",
+									"value": "h3-style"
+								},
+								{
+									"label": "Heading 4",
+									"value": "h4-style"
+								}
+							]
+						}
+					},					
+					{
+						"type": "number",
+						"label": "Font size",
+						"id": "fsp",
+						"default": {
+							"value": 16,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "p-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Line height",
+						"id": "lhp",
+						"default": {
+							"value": 20,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "p-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Font size",
+						"id": "fsh1",
+						"default": {
+							"value": 48,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h1-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Line height",
+						"id": "lhh1",
+						"default": {
+							"value": 52,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h1-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Font size",
+						"id": "fsh2",
+						"default": {
+							"value": 36,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h2-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Line height",
+						"id": "lhh2",
+						"default": {
+							"value": 40,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h2-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Font size",
+						"id": "fsh3",
+						"default": {
+							"value": 28,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h3-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Line height",
+						"id": "lhh3",
+						"default": {
+							"value": 32,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h3-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Font size",
+						"id": "fsh4",
+						"default": {
+							"value": 20,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h4-style"
+                            ]
+                        }
+					},
+					{
+						"type": "number",
+						"label": "Line height",
+						"id": "lhh4",
+						"default": {
+							"value": 24,
+							"type": "px"
+						},
+						"typeMeta": {
+							"parseType": "integer"
+						},
+						"conditional": {
+                            "key": "textStyle",
+                            "operator": "IN",
+                            "value": [
+                                "h4-style"
+                            ]
+                        }
+					},
+					{
+						"type": "select",
+						"label": "Font weight",
+						"id": "fontWeight",
+						"default": "400",
+						"typeMeta": {
+							"selectOptions": [
+								{
+									"label": "Normal",
+									"value": "400"
+								},
+								{
+									"label": "Bold",
+									"value": "700"
+								}
+							]
+						}
+					},
+					{
+						"type": "color",
+						"label": "Text color",
+						"id": "fontColor",
+						"default": "#333333"
+					},
+					{
+						"type": "alignment",
+						"label": "Alignment",
+						"id": "alignment",
+						"default": {
+							"horizontal": "center",
+							"vertical": "middle"
+						},
+						"typeMeta": {
+							"display": "horizontal"
+						}
+					}
+				]
+			},
+			{
+				"label": "Spacing",
+				"settings": [
+					{
+						"type": "boxModel",
+						"label": "Padding (px)",
+						"id": "padding",
+						"default": {
+							"top": {
+								"value": "0",
+								"type": "px"
+							},
+							"right": {
+								"value": "0",
+								"type": "px"
+							},
+							"bottom": {
+								"value": "0",
+								"type": "px"
+							},
+							"left": {
+								"value": "0",
+								"type": "px"
+							}
+						}
+					},
+					{
+						"type": "boxModel",
+						"label": "Margin (px)",
+						"id": "margin",
+						"default": {
+							"top": {
+								"value": "0",
+								"type": "px"
+							},
+							"right": {
+								"value": "0",
+								"type": "px"
+							},
+							"bottom": {
+								"value": "0",
+								"type": "px"
+							},
+							"left": {
+								"value": "0",
+								"type": "px"
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Animation",
+				"settings": [
+					{
+						"type": "select",
+						"id": "animationStyle",
+						"label": "Style",
+						"default": "none",
+						"typeMeta": {
+							"selectOptions": [
+								{
+									"label": "none",
+									"value": "none"
+								},
+								{
+									"label": "Fade",
+									"value": "fade"
+								},
+								{
+									"label": "Fade Up",
+									"value": "fade-up"
+								},
+								{
+									"label": "Fade Down",
+									"value": "fade-down"
+								},
+								{
+									"label": "Fade Right",
+									"value": "fade-right"
+								},
+								{
+									"label": "Fade Left",
+									"value": "fade-left"
+								},
+								{
+									"label": "Fade Up Right",
+									"value": "fade-up-right"
+								},
+								{
+									"label": "Fade Up Left",
+									"value": "fade-up-left"
+								},
+								{
+									"label": "Fade Down Right",
+									"value": "fade-down-right"
+								},
+								{
+									"label": "Fade Down Left",
+									"value": "fade-down-left"
+								},
+								{
+									"label": "Flip Up",
+									"value": "flip-up"
+								},
+								{
+									"label": "Flip Down",
+									"value": "flip-down"
+								},
+								{
+									"label": "Flip Right",
+									"value": "flip-right"
+								},
+								{
+									"label": "Flip Left",
+									"value": "flip-left"
+								},
+								{
+									"label": "Slide Up",
+									"value": "slide-up"
+								},
+								{
+									"label": "Slide Down",
+									"value": "slide-down"
+								},
+								{
+									"label": "Slide Left",
+									"value": "slide-left"
+								},
+								{
+									"label": "Slide Right",
+									"value": "slide-right"
+								},
+								{
+									"label": "Zoom In",
+									"value": "zoom-in"
+								},
+								{
+									"label": "Zoom In Up",
+									"value": "zoom-in-up"
+								},
+								{
+									"label": "Zoom In Down",
+									"value": "zoom-in-down"
+								},
+								{
+									"label": "Zoom In Right",
+									"value": "zoom-in-right"
+								},
+								{
+									"label": "Zoom In Left",
+									"value": "zoom-in-left"
+								},
+								{
+									"label": "Zoom Out",
+									"value": "zoom-out"
+								},
+								{
+									"label": "Zoom Out Up",
+									"value": "zoom-out-up"
+								},
+								{
+									"label": "Zoom Out Down",
+									"value": "zoom-out-down"
+								},
+								{
+									"label": "Zoom Out Right",
+									"value": "zoom-out-right"
+								},
+								{
+									"label": "Zoom Out Left",
+									"value": "zoom-out-left"
+								}
+							]
+						}
+					},
+					{
+						"type": "number",
+						"id": "animationDuration",
+						"label": "Duration (ms)",
+						"default": {
+							"value": 2000
+						}
+					},
+					{
+						"type": "number",
+						"id": "animationDelay",
+						"label": "Delay (ms)",
+						"default": {
+							"value": 0
+						}
+					}
+				]
+			},
+			{
+				"label": "Visibility",
+				"settings": [
+					{
+						"type": "boolean",
+						"label": "Hide for desktop",
+						"id": "hideDesktop",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for tablet",
+						"id": "hideTablet",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for mobile",
+						"id": "hideMobile",
+						"default": false
+					}
+				]
+			}
+		]
+	}
+]

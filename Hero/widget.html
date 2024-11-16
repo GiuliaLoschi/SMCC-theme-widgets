@@ -1,0 +1,195 @@
+<style>
+	#wg-{{_.id}} {
+		padding-top: {{contentSpacing.padding.top.value}}px;
+        padding-right: {{contentSpacing.padding.right.value}}px;
+        padding-bottom: {{contentSpacing.padding.bottom.value}}px;
+        padding-left: {{contentSpacing.padding.left.value}}px;
+        margin-top: {{contentSpacing.margin.top.value}}px;
+        margin-right: {{contentSpacing.margin.right.value}}px;
+        margin-bottom: {{contentSpacing.margin.bottom.value}}px;
+        margin-left: {{contentSpacing.margin.left.value}}px;
+
+		{{#if backgroundType "==" "image"}}
+		background-repeat: no-repeat;
+		{{#if imageFit "==" "parallax"}}
+		background-size: cover;
+		background-attachment: fixed;
+		{{else}}
+		background-size: {{imageFit}};
+		{{/if}}
+		background-image:url('{{desktopImage.image.src}}');
+		background-position: {{desktopImage.alignment.horizontal}} {{#if desktopImage.alignment.vertical '==' 'middle'}}center{{else}}{{desktopImage.alignment.vertical}}{{/if}};
+		{{/if}}
+		{{#if backgroundType "==" "color"}}
+		background-color: {{backgroundColor}};
+		{{/if}}  
+	}
+	
+	{{!-- Background opacity --}}
+	{{#inArray (split "image,video" ",") backgroundType}}
+	#wg-{{_.id}}::after {
+		opacity: calc({{overlayOpacity}}/100);
+		background-color: {{overlayColor}};
+	}
+	{{/inArray}}
+
+	{{!-- color text content --}}
+	#wg-{{_.id}} .wg-hero-box__title,
+    #wg-{{_.id}} .wg-hero-box__title p {
+        font-size: {{elemTitle.fontSize.value}}px; 
+        line-height: {{elemTitle.lineHeight.value}}px;
+        color: {{elemTitle.titleColor}};
+    }
+	#wg-{{_.id}} .wg-hero-box__subtitle,
+    #wg-{{_.id}} .wg-hero-box__subtitle p { 
+        font-size: {{elemSubtitle.fontSize.value}}px; 
+        line-height: {{elemSubtitle.lineHeight.value}}px;
+        color: {{elemSubtitle.subtitleColor}};
+    }
+
+	{{!-- Content alignment bottom, according to padding bottom set --}}
+	#wg-{{_.id}} .wg-align--bottom {
+		position: absolute;
+		bottom: {{contentSpacing.padding.bottom.value}}px;
+	}
+	#wg-{{_.id}} .wg-align--bottom.wg-align--right {
+		right: {{contentSpacing.padding.right.value}}px;
+	}
+
+	{{!-- Responsive image --}}
+	@media screen and (min-width: 701px) and (max-width:991px){
+		#wg-{{_.id}} { 
+			{{#if tabletImage.loadImage '==' 'show'}}
+            background-image: url('{{tabletImage.image.src}}');
+            {{/if}}
+            background-position-x: {{tabletImage.alignment.horizontal}};
+            background-position-y: {{#if tabletImage.alignment.vertical '==' 'middle'}}center{{else}}{{tabletImage.alignment.vertical}}{{/if}};
+        }
+    }
+
+	{{!-- Responsive image --}}
+	@media screen and (max-width: 700px){
+		#wg-{{_.id}} { 
+			{{#if mobileImage.loadImage '==' 'show'}}
+            background-image: url('{{mobileImage.image.src}}');
+            {{/if}}
+            background-position-x: {{mobileImage.alignment.horizontal}};
+            background-position-y: {{#if mobileImage.alignment.vertical '==' 'middle'}}center{{else}}{{mobileImage.alignment.vertical}}{{/if}};
+        }
+    }		
+</style>
+
+<div id="wg-{{_.id}}"
+	{{#if animationStyle "!=" "none"}}
+    data-aos="{{animationStyle}}"
+    data-aos-duration="{{animationDuration.value}}"
+    data-aos-delay="{{animationDelay.value}}"
+    {{/if}}
+	class='wg-hero-box wg-size--{{heroSize}} {{#if hideDesktop}}hide-d{{/if}} {{#if hideTablet}}hide-t{{/if}} {{#if hideMobile}}hide-m{{/if}}'>
+  
+	{{#if backgroundType "==" "video"}}
+	<div class="wg-hero-box__video">
+		{{#or (if (occurrences videoUrl "youtube") '>' '0') (if (occurrences videoUrl "vimeo") '>' '0')}}
+		<iframe src="{{videoUrl}}{{#if (occurrences videoUrl '?') '>' '0'}}&{{else}}?{{/if}}controls=0{{#if videoAuotoplay}}&autoplay=1&mute=1&muted=1{{/if}}{{#if videoLoop}}&loop=1{{/if}}" frameborder="0" allow="autoplay"></iframe>
+		{{/or}}		
+	</div>
+	{{/if}}
+
+	<div class='wg-hero-box__content wg-align--{{contentAlignment.horizontal}} wg-align--{{contentAlignment.vertical}}'>
+	{{#if contentAnimation.style "!=" "none"}}
+		<div data-aos="{{contentAnimation.style}}" data-aos-duration="{{contentAnimation.duration.value}}" data-aos-delay="{{contentAnimation.delay.value}}">
+	{{/if}}
+    	{{#if elemTitle.visibility "==" "show"}}<div id="wg-editable-title-{{_.id}}" class='wg-hero-box__title' data-edit-mode="{{_.pageBuilderData.previewState.editMode}}">{{{title}}}</div>{{/if}}
+    	{{#if elemSubtitle.visibility "==" "show"}}<div id="wg-editable-subtitle-{{_.id}}" class='wg-hero-box__subtitle' data-edit-mode="{{_.pageBuilderData.previewState.editMode}}">{{{subtitle}}}</div>{{/if}}
+		{{#if elemButton.visibility "==" "show"}}<a class='wg-hero-box__btn button {{elemButton.buttonStyle}}' href='{{elemButton.buttonLink}}'>{{elemButton.buttonText}}</a>{{/if}}
+	{{#if contentAnimation.style "!=" "none"}}	
+		</div>
+	{{/if}}
+	</div>
+</div>
+
+{{#if _.context.isEditorMode '===' true}}
+<script type="text/javascript">
+    (function () {
+        var editMode = false;
+        var selector1 = "wg-editable-title-{{_.id}}";
+        var selector2 = "wg-editable-subtitle-{{_.id}}";
+
+        var element1 = document.getElementById(selector1);
+        var element2 = document.getElementById(selector2);
+        if (!element1 && !element2) { return; }
+
+        function initializeContentEditableText () {
+            if (window.BigCommerce && window.BigCommerce.inlineEditor && window.BigCommerce.sendWidgetUpdate) {
+                editMode = true;
+                if (element1) {
+                window.BigCommerce.inlineEditor.init({
+                    selector: "#" + selector1,
+                    editMode: editMode,
+                    onBlur: function (content) {
+                        element1.innerHtml = content;
+                        flushChanges('title', content);
+                    },
+                    onKeyup: flushChanges,
+                    toolbarItems: ['bold', 'italic', 'underline', 'strikethrough', 'link', 'forecolor', 'backcolor', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'alignnone', 'undo']
+                });}
+                if (element2) {
+                window.BigCommerce.inlineEditor.init({
+                    selector: "#" + selector2,
+                    editMode: editMode,
+                    onBlur: function (content) {
+                        element2.innerHtml = content;
+                        flushChanges('subtitle', content);
+                    },
+                    onKeyup: flushChanges,
+                    toolbarItems: ['bold', 'italic', 'underline', 'strikethrough', 'link', 'forecolor', 'backcolor', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'alignnone', 'undo']
+                });}
+            }
+        };
+
+        function flushChanges(id, content) {
+            var props = (id == 'title') ? {"title": content} : {"subtitle": content};
+            window.BigCommerce.sendWidgetUpdate(props, "{{_.id}}");
+        }
+
+        function setEditMode(data) {
+            editMode = data.editMode;
+            if (element1) element1.dataset.editMode = editMode;
+            if (element2) element2.dataset.editMode = editMode;
+
+            if (window.BigCommerce && window.BigCommerce.inlineEditor) {
+                if (editMode) {
+                    initializeContentEditableText()
+                } else {
+                    if (element1) window.BigCommerce.inlineEditor.remove("#" + selector1);
+                    if (element2) window.BigCommerce.inlineEditor.remove("#" + selector2);
+                }
+            }
+        }
+
+        window.addEventListener('message', function (event) {
+            try {
+                var data = JSON.parse(event.data);
+            } catch (error) {
+                return;
+            }
+
+            [{
+                action: 'sdk-loaded',
+                initiator: 'PAGE_BUILDER',
+                callback: initializeContentEditableText
+            },{
+                action: 'toggle-edit-mode',
+                initiator: 'PAGE_BUILDER',
+                callback: setEditMode
+            }].forEach(function (handler) {
+                if (data.action === handler.action && data.initiator === handler.initiator) {
+                    try { handler.callback(data); } catch (error) {}
+                }
+            })
+        });
+
+        initializeContentEditableText();
+    })();
+</script>
+{{/if}}

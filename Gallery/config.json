@@ -1,0 +1,160 @@
+{
+  "slides": [
+    {
+      "mediaType": "image",
+      "videoUrl": {
+        "value": "",
+        "parts": {
+          "id": null,
+          "type": null
+        }
+      },
+      "controls": true,
+      "desktopImage": {
+        "image": {
+          "src": "https://picsum.photos/id/352/1920/650",
+          "type": "IMAGE_MANAGER"
+        },
+        "alignment": {
+          "horizontal": "center"
+        }
+      },
+      "tabletImage": {
+        "loadImage": "hide",
+        "image": {
+          "src": "",
+          "type": "IMAGE_MANAGER"
+        },
+        "alignment": {
+          "horizontal": "center"
+        }
+      },
+      "mobileImage": {
+        "loadImage": "hide",
+        "image": {
+          "src": "",
+          "type": "IMAGE_MANAGER"
+        },
+        "alignment": {
+          "horizontal": "center"
+        }
+      }
+    },
+    {
+      "mediaType": "image",
+      "videoUrl": {
+        "value": "",
+        "parts": {
+          "id": null,
+          "type": null
+        }
+      },
+      "controls": true,
+      "desktopImage": {
+        "image": {
+          "src": "https://picsum.photos/id/352/1920/650",
+          "type": "IMAGE_MANAGER"
+        },
+        "alignment": {
+          "horizontal": "center"
+        }
+      },
+      "tabletImage": {
+        "loadImage": "hide",
+        "image": {
+          "src": "",
+          "type": "IMAGE_MANAGER"
+        },
+        "alignment": {
+          "horizontal": "center"
+        }
+      },
+      "mobileImage": {
+        "loadImage": "hide",
+        "image": {
+          "src": "",
+          "type": "IMAGE_MANAGER"
+        },
+        "alignment": {
+          "horizontal": "center"
+        }
+      }
+    }
+  ],
+  "download": true,
+  "dots": true,
+  "arrows": true,
+  "autoplaySpeed": {
+    "value": 2000,
+    "type": "ms"
+  },
+  "slidesToShow": {
+    "value": 1,
+    "type": "#"
+  },
+  "slidesToScroll": {
+    "value": 1,
+    "type": "#"
+  },
+  "slidesHeight": {
+    "value": 600,
+    "type": "px"
+  },
+  "responsive": true,
+  "tablet": {
+    "visibility": "show",
+    "slidesHeight": {
+      "value": 400,
+      "type": "px"
+    },
+    "breakpoint": {
+      "value": 990,
+      "type": "px"
+    },
+    "slidesToShow": {
+      "value": 2,
+      "type": "#"
+    },
+    "slidesToScroll": {
+      "value": 1,
+      "type": "#"
+    }
+  },
+  "mobile": {
+    "visibility": "show",
+    "slidesHeight": {
+      "value": 400,
+      "type": "px"
+    },
+    "breakpoint": {
+      "value": 500,
+      "type": "px"
+    },
+    "slidesToShow": {
+      "value": 1,
+      "type": "#"
+    },
+    "slidesToScroll": {
+      "value": 1,
+      "type": "#"
+    }
+  },
+  "margin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  }
+}

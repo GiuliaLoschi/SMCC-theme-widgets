@@ -1,0 +1,93 @@
+{
+  "textContent": "You can use this widget to input text into the page.",
+  "textStyle": "h1-style",
+  "fsp": {
+    "value": 16,
+    "type": "px"
+  },
+  "lhp": {
+    "value": 20,
+    "type": "px"
+  },
+  "fsh1": {
+    "value": 48,
+    "type": "px"
+  },
+  "lhh1": {
+    "value": 52,
+    "type": "px"
+  },
+  "fsh2": {
+    "value": 36,
+    "type": "px"
+  },
+  "lhh2": {
+    "value": 40,
+    "type": "px"
+  },
+  "fsh3": {
+    "value": 28,
+    "type": "px"
+  },
+  "lhh3": {
+    "value": 32,
+    "type": "px"
+  },
+  "fsh4": {
+    "value": 20,
+    "type": "px"
+  },
+  "lhh4": {
+    "value": 24,
+    "type": "px"
+  },
+  "fontWeight": "400",
+  "fontColor": "#333333",
+  "alignment": {
+    "horizontal": "center",
+    "vertical": "middle"
+  },
+  "padding": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "margin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "animationStyle": "none",
+  "animationDuration": {
+    "value": 2000
+  },
+  "animationDelay": {
+    "value": 0
+  }
+}

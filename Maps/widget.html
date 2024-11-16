@@ -1,0 +1,91 @@
+{{#if _.context.isEditorMode '==' true}}
+    <script type='text/javascript'>
+        (function () { 
+            window.SMCCLeafletMap && window.SMCCLeafletMap(); 
+        })();
+    </script>
+{{/if}}
+
+<style>
+    #wg-{{_.id}} .wg-maps__container,
+    #wg-{{_.id}} .wg-maps__slider { 
+        height: calc({{mapHeight.value}}{{mapHeight.type}} + 20px);
+    }
+</style>
+
+<div data-smcc-map-zoom="{{mapZoom}}"
+    id="wg-{{_.id}}" 
+    class="wg-maps {{#if hideDesktop}}hide-d{{/if}} {{#if hideTablet}}hide-t{{/if}} {{#if hideMobile}}hide-m{{/if}}">
+
+    <div class="row">        
+        <div class="{{#if showSlider '==' 'show'}}col-lg-9{{else}}col-12{{/if}}">
+            <div class="wg-maps__container" id="{{_.id}}"></div>
+        </div>
+        <div class="{{#if showSlider '==' 'show'}}col-lg-3{{else}}col-12{{/if}}">
+            {{#if showSlider '==' 'show'}}
+                <div class="wg-maps__slider">
+                    {{#each markers}}
+                    {{#if @first}}
+                    <div class="slide">
+                    {{/if}}
+                        <div data-smcc-map-marker="{{@index}}"
+                            data-smcc-map-lat="{{lat}}"    
+                            data-smcc-map-lng="{{lng}}"
+                            data-smcc-map-name="{{name}}"
+                            data-smcc-map-address="{{address}}"
+                            data-smcc-map-dir="{{showDirection}}"
+                            data-smcc-map-img="{{#if showImage '==' 'show'}}{{image.src}}{{/if}}">
+                            <div class="map-item-content">
+                                <div class="map-item-infos pb-3">
+                                    <div class="map-item__name">{{name}}</div>
+                                    <div class="map-item__address">{{address}}</div>
+                                </div>
+                                {{#if (chop web) "!==" ""}}
+                                    <div class="map-item__contact">
+                                        <svg class="fi"><use xlink:href="#fi-globe"/></svg>
+                                        <div>
+                                            <a href="http://{{web}}" target="_blank">{{web}}</a>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                                {{#if (chop mail) "!==" ""}}
+                                    <div class="map-item__contact">
+                                        <svg class="fi"><use xlink:href="#fi-mail"/></svg>
+                                        <div>
+                                            <a href="mailto:{{mail}}">
+                                                <span>{{first (arrayify (split mail "@"))}}</span>@<span>{{last (arrayify (split mail "@"))}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                {{#if (chop phone) "!==" ""}}
+                                    <div class="map-item__contact">
+                                        <svg class="fi"><use xlink:href="#fi-phone"/></svg>
+                                        <div><a href="tel:{{phone}}"><span>{{phone}}</span></a></div>
+                                    </div>
+                                {{/if}}                                
+                            </div>
+                            {{#if ../_.context.isEditorMode '==' true}}
+                                <div class="wg-idx">Marker {{add @index 1}}</div>
+                            {{/if}}
+                        </div>
+                        {{#ifOdd @index}}</div><div class="slide">{{/ifOdd}}
+                        {{#if @last}}</div>{{/if}}
+                    {{/each}}
+                </div>
+                <div class="wg-maps__slider-shadow"></div>
+            {{else}}
+                {{#each markers}}
+                    <div data-smcc-map-marker="{{@index}}"
+                        data-smcc-map-lat="{{lat}}"    
+                        data-smcc-map-lng="{{lng}}"
+                        data-smcc-map-name="{{name}}"
+                        data-smcc-map-address="{{address}}"
+                        data-smcc-map-dir="{{showDirection}}"
+                        data-smcc-map-img="{{#if showImage '==' 'show'}}{{image.src}}{{/if}}">
+                    </div>
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>    
+</div>

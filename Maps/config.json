@@ -1,0 +1,23 @@
+{
+  "markers": [
+    {
+      "lat": "45.01436674877623",
+      "lng": "7.6255916709354885",
+      "name": "Biodea",
+      "address": "C.so Unione Sovietica, 603 - 10135 Torino",
+      "mail": "info@golmar.com",
+      "showDirection": "show",
+      "showImage": "hide",
+      "image": {
+        "src": "https://picsum.photos/250/150",
+        "type": "IMAGE_MANAGER"
+      }
+    }
+  ],
+  "mapZoom": 8,
+  "mapHeight": {
+    "value": 800,
+    "type": "px"
+  },
+  "showSlider": "show"
+}

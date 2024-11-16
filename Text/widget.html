@@ -1,0 +1,148 @@
+
+<style>
+    #wg-{{_.id}} {
+        padding-top: {{padding.top.value}}px;
+        padding-right: {{padding.right.value}}px;
+        padding-bottom: {{padding.bottom.value}}px;
+        padding-left: {{padding.left.value}}px;
+
+        margin-top: {{margin.top.value}}px;
+        margin-right: {{margin.right.value}}px;
+        margin-bottom: {{margin.bottom.value}}px;
+        margin-left: {{margin.left.value}}px;
+
+        {{#if alignment.horizontal '===' 'center'}}
+        text-align: center;
+        {{else if alignment.horizontal '===' 'left'}}
+        text-align: left;
+        {{else if alignment.horizontal '===' 'right'}}
+        text-align: right;
+        {{/if}}
+    }
+    
+    {{#if textStyle "==" "p-style"}}
+    #wg-{{_.id}} .p-style,
+    #wg-{{_.id}} .p-style p {
+        font-size: {{fsp.value}}px;
+        line-height: {{lhp.value}}px;
+    }
+    {{/if}}
+
+    {{#if textStyle "==" "h1-style"}}
+    #wg-{{_.id}} .h1-style p,
+    #wg-{{_.id}} .h1-style {
+        font-size: {{fsh1.value}}px;
+        line-height: {{lhh1.value}}px;
+    }
+    {{/if}}
+
+    {{#if textStyle "==" "h2-style"}}
+    #wg-{{_.id}} .h2-style p,
+    #wg-{{_.id}} .h2-style {
+        font-size: {{fsh2.value}}px;
+        line-height: {{lhh2.value}}px;
+    }
+    {{/if}}
+
+    {{#if textStyle "==" "h3-style"}}
+    #wg-{{_.id}} .h3-style p {
+        font-size: {{fsh3.value}}px;
+        line-height: {{lhh3.value}}px;
+    }
+    {{/if}}
+
+    {{#if textStyle "==" "h4-style"}}
+    #wg-{{_.id}} .h4-style,
+    #wg-{{_.id}} .h4-style p {
+        font-size: {{fsh4.value}}px;
+        line-height: {{lhh4.value}}px;
+    }
+    {{/if}}
+    #wg-editable-{{_.id}} * {
+        color: {{fontColor}};
+    }
+</style>
+
+<div id="wg-{{_.id}}" 
+    {{#if animationStyle "!=" "none"}}
+    data-aos="{{animationStyle}}"
+    data-aos-duration="{{animationDuration.value}}"
+    data-aos-delay="{{animationDelay.value}}"
+    {{/if}}
+    class="wg-text {{#if hideDesktop}}hide-d{{/if}} {{#if hideTablet}}hide-t{{/if}} {{#if hideMobile}}hide-m{{/if}}">
+    <div id="wg-editable-{{_.id}}" data-edit-mode="{{_.pageBuilderData.previewState.editMode}}" class="{{textStyle}}">
+        {{{textContent}}}
+    </div>
+</div>
+
+{{#if _.context.isEditorMode '===' true}}
+<script type="text/javascript">
+    (function () {
+        var editMode = false;
+        var selector = "wg-editable-{{_.id}}";
+        var element = document.getElementById(selector);
+        if (!element) { return; }
+
+        function initializeContentEditableText () {
+            if (window.BigCommerce && window.BigCommerce.inlineEditor && window.BigCommerce.sendWidgetUpdate) {
+                editMode = true;
+                window.BigCommerce.inlineEditor.init({
+                    selector: "#" + selector,
+                    editMode: editMode,
+                    onBlur: function (content) {
+                        element.innerHtml = content;
+                        flushChanges(content);
+                    },
+                    onKeyup: flushChanges,
+                    toolbarItems: ['bold', 'italic', 'underline', 'strikethrough', 'link', 'unlink', 'forecolor', 'backcolor', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'alignnone', 'removeformat', 'undo']
+                });
+            }
+        };
+
+        function flushChanges(content) {
+            var props = {
+                "textContent": content
+            };
+
+            window.BigCommerce.sendWidgetUpdate(props, "{{_.id}}");
+        }
+
+        function setEditMode(data) {
+            editMode = data.editMode;
+            element.dataset.editMode = editMode;
+
+            if (window.BigCommerce && window.BigCommerce.inlineEditor) {
+                if (editMode) {
+                    initializeContentEditableText()
+                } else {
+                    window.BigCommerce.inlineEditor.remove("#" + selector);
+                }
+            }
+        }
+
+        window.addEventListener('message', function (event) {
+            try {
+                var data = JSON.parse(event.data);
+            } catch (error) {
+                return;
+            }
+
+            [{
+                action: 'sdk-loaded',
+                initiator: 'PAGE_BUILDER',
+                callback: initializeContentEditableText
+            },{
+                action: 'toggle-edit-mode',
+                initiator: 'PAGE_BUILDER',
+                callback: setEditMode
+            }].forEach(function (handler) {
+                if (data.action === handler.action && data.initiator === handler.initiator) {
+                    try { handler.callback(data); } catch (error) {}
+                }
+            })
+        });
+
+        initializeContentEditableText();
+    })();
+</script>
+{{/if}}

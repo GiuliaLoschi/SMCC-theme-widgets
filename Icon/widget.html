@@ -1,0 +1,23 @@
+<style>
+	#wg-{{_.id}} {
+		margin-top: {{margin.top.value}}px;
+        margin-right: {{margin.right.value}}px;
+        margin-bottom: {{margin.bottom.value}}px;
+        margin-left: {{margin.left.value}}px;
+		padding-top: {{padding.top.value}}px;
+        padding-right: {{padding.right.value}}px;
+        padding-bottom: {{padding.bottom.value}}px;
+        padding-left: {{padding.left.value}}px;        
+        text-align: {{align.horizontal}};
+    }
+    #wg-{{_.id}} svg {
+        fill: {{color}};
+        width: {{width.value}}px;
+        height: {{width.value}}px;
+    }
+</style>
+<div id="wg-{{_.id}}" class="wg-icon">
+    <svg role="img" focusable="false" aria-label="{{capitalize icon}}">
+        <use xlink:href="#{{icon}}"/>
+    </svg>
+</div>

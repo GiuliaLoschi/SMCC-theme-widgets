@@ -1,0 +1,248 @@
+{{assignVar "id" _.id}}
+{{assignVar "slidesHeightD" slidesHeight.value}}
+{{assignVar "slidesHeightT" tablet.slidesHeight.value}}
+{{assignVar "slidesHeightM" mobile.slidesHeight.value}}
+
+<style>
+    #wg-{{_.id}} {
+		margin-top: {{margin.top.value}}px;
+        margin-right: {{margin.right.value}}px;
+        margin-bottom: {{margin.bottom.value}}px;
+        margin-left: {{margin.left.value}}px;
+    }
+
+    #wg-{{_.id}} .invalid-input {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background: #F6F7FC;
+        justify-content: center;
+        position: absolute;
+    }
+
+    #wg-{{_.id}} .invalid-input > svg {
+        height: 100%;
+        width: 20%;
+    }
+
+    #wg-{{_.id}} .invalid-input > svg > rect {
+        fill: #D9DCE9;
+    }
+
+    #wg-{{_.id}} .invalid-input > svg > path {
+        fill: #FFFFFF;
+    }
+
+    #wg-{{_.id}} .slick-prev { left: -5px; }
+    #wg-{{_.id}} .slick-next { right: -5px; }
+
+    #wg-{{_.id}} [download] {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 999;
+    }
+    
+    #wg-{{_.id}} .item-video {
+        background-color: #000;
+        position: relative;
+        width: 100%;
+        height: {{getVar "slidesHeightD"}}px;
+    }
+
+    #wg-{{_.id}} .item-video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: {{getVar "slidesHeightD"}}px;
+    }
+
+    #wg-{{_.id}} .item-image {
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+    #wg-{{_.id}} .wg-gallery__item {
+        height: {{getVar "slidesHeightD"}}px;
+    }
+
+    {{!-- Tablet image --}}
+    @media screen and (min-width: 701px) and (max-width:991px){
+        #wg-{{_.id}} .item-video,
+        #wg-{{_.id}} .item-video iframe,
+        #wg-{{_.id}} .wg-gallery__item {
+            height: {{getVar "slidesHeightT"}}px;
+        }
+    }
+
+    {{!-- Mobile image --}}
+    @media screen and (max-width: 700px){
+        #wg-{{_.id}} .item-video,
+        #wg-{{_.id}} .item-video iframe,
+        #wg-{{_.id}} .wg-gallery__item {
+            height: {{getVar "slidesHeightM"}}px;
+        }
+    }
+</style>
+<div id="wg-{{_.id}}" class="wg-gallery {{#if hideDesktop}}hide-d{{/if}} {{#if hideTablet}}hide-t{{/if}} {{#if hideMobile}}hide-m{{/if}}"
+    data-slick='{
+        "dots": {{#if dots}}true{{else}}false{{/if}},
+        "arrows": {{#if arrows}}true{{else}}false{{/if}},
+        "infinite": {{#if infinite}}true{{else}}false{{/if}},
+        {{#if autoplay}}
+        "autoplay": true,
+        "autoplaySpeed": {{autoplaySpeed.value}},{{/if}}
+        "slidesToShow": {{slidesToShow.value}},
+        "slidesToScroll": {{slidesToScroll.value}}{{#if responsive}},
+        "responsive": [
+            {{#if tablet.visibility "==" "show"}}{
+                "breakpoint": {{tablet.breakpoint.value}},
+                "settings": {
+                    "slidesToShow": {{tablet.slidesToShow.value}},
+                    "slidesToScroll": {{tablet.slidesToScroll.value}}
+                }
+            }{{#if mobile.visibility "==" "show"}},{{/if}}{{/if}}
+            {{#if mobile.visibility "==" "show"}}{
+                "breakpoint": {{mobile.breakpoint.value}},
+                "settings": {
+                    "slidesToShow": {{mobile.slidesToShow.value}},
+                    "slidesToScroll": {{mobile.slidesToScroll.value}}
+                }
+            }{{/if}}
+        ]{{/if}}
+    }'>
+    {{#each slides}}
+    <div class="wg-gallery__item wg-set__item" data-item-index="{{@index}}">
+
+        {{!-- Check if media is a video --}}
+        {{#if mediaType '===' 'video'}}
+            <div class="item-video">
+                {{#if videoUrl.value '===' ''}}
+                    <div id="invalid-input-{{../_.id}}-{{@index}}" class="invalid-input">
+                        <!-- Waiting for input from user -->
+                        <svg viewBox="0 0 182 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="182" height="114.947" rx="10"/>
+                            <path d="M120.952 53.2903C122.425 54.0275 122.425 56.1302 120.952 56.8674L73.5397 80.591C72.2099 81.2564
+                            70.6448 80.2895 70.6448 78.8024V31.3552C70.6448 29.8682 72.2099 28.9012 73.5397 29.5667L120.952 53.2903Z"
+                            />
+                        </svg>
+                    </div>
+                {{else}}
+                    {{#unless videoUrl.parts.type}}
+                        <style>#invalid-input-{{../_.id}}-{{@index}} {text-align: center;}</style>
+                        <div id="invalid-input-{{../_.id}}-{{@index}}" class="invalid-input">
+                            <h3>Invalid URL entered</h3>
+                        </div>
+                    {{else}}
+                        {{#unless videoUrl.parts.id}}
+                        <style>#invalid-input-{{../_.id}}-{{@index}} {text-align: center;}</style>
+                        <div id="invalid-input-{{../_.id}}-{{@index}}" class="invalid-input">
+                            <h3>Invalid URL entered</h3>
+                        </div>
+                        {{/unless}}
+                    {{/unless}}
+                    {{#contains 'youtube' videoUrl.parts.type}}
+                        {{#if videoUrl.parts.id}}
+                            {{#if ../download}}
+                                <a href="{{videoUrlDav}}" target="_blank" class="button button--primary" download="video">Download</a>
+                            {{/if}}
+                            <iframe
+                                id="player-{{../_.id}}"
+                                class="wg-video__player"
+                                type="text/html"
+                                src="https://www.youtube.com/embed/{{videoUrl.parts.id}}?enablejsapi=1&autoplay={{#if autoplay}}1{{else}}0{{/if}}&controls={{#if controls}}1{{else}}0{{/if}}&fs=1&loop={{#if loop}}1&playlist={{videoUrl.parts.id}}{{else}}0{{/if}}&rel=0&mute={{#if autoplay}}1{{else}}0{{/if}}"
+                                frameborder="0"
+                                webkitallowfullscreen
+                                mozallowfullscreen
+                                allowfullscreen
+                                {{#if ../_.pageBuilderData.previewState.editMode}}onload="initDevMode(this)"{{/if}}
+                            ></iframe>
+                        {{/if}}
+                    {{/contains}}
+                    {{#if videoUrl.parts.type '===' 'vimeo'}}
+                        {{#if videoUrl.parts.id}}
+                            {{#if ../download}}
+                                <a href="{{videoUrlDav}}" target="_blank" class="button button--primary" download="video">Download</a>
+                            {{/if}}
+                            <iframe
+                                id="player-{{../_.id}}"
+                                class="wg-video-player"
+                                src="https://player.vimeo.com/video/{{videoUrl.parts.id}}?api=1&autoplay={{#if autoplay}}1{{else}}0{{/if}}&loop={{#if loop}}1{{else}}0{{/if}}"
+                                frameborder="0"
+                                webkitallowfullscreen
+                                mozallowfullscreen
+                                allowfullscreen
+                                {{#if ../_.pageBuilderData.previewState.editMode}}onload="initDevMode(this)"{{/if}}
+                            ></iframe>
+                        {{/if}}
+                    {{/if}}
+                    {{#if videoUrl.parts.type '===' 'drive'}}
+                        {{#if ../download}}
+                            <a href="{{videoUrlDav}}" target="_blank" class="button button--primary" download="video">Download</a>
+                        {{/if}}
+                        <iframe
+                            id="player-{{../_.id}}"
+                            class="wg-video-player"
+                            src="{{videoUrl.value}}/preview"
+                            frameborder="0"
+                            webkitallowfullscreen
+                            mozallowfullscreen
+                            allowfullscreen
+                            allow="autoplay"
+                        ></iframe>
+                    {{/if}}
+                {{/if}}
+            </div>
+        {{/if}}
+
+        {{!-- Check if media is an image --}}
+        {{#if mediaType '===' 'image'}}
+            <style>
+                #wg-{{getVar "id"}} [data-item-index="{{@index}}"] .item-image {
+                    background-image: url('{{desktopImage.image.src}}');
+                    background-position-x: {{desktopImage.alignment.horizontal}};
+                    {{!--background-position-y: {{#if desktopImage.alignment.vertical '===' 'middle'}}center{{else}}{{desktopImage.alignment.vertical}}{{/if}};--}}
+                }
+
+                {{!-- Tablet image --}}
+                @media screen and (min-width: 701px) and (max-width:991px) {
+                    {{#if tabletImage.loadImage '==' 'show'}}
+                    #wg-{{getVar "id"}} [data-item-index="{{@index}}"] .item-image {
+                        background-image: url('{{tabletImage.image.src}}');
+                        background-position-x: {{tabletImage.alignment.horizontal}};
+                        {{!--background-position-y: {{#if tabletImage.alignment.vertical '===' 'middle'}}center{{else}}{{tabletImage.alignment.vertical}}{{/if}};--}}
+                    }
+                    {{else}}
+                    #wg-{{getVar "id"}} [data-item-index="{{@index}}"] .item-image {
+                            background-position-x: {{tabletImage.alignment.horizontal}};
+                            {{!--background-position-y: {{#if tabletImage.alignment.vertical '===' 'middle'}}center{{else}}{{tabletImage.alignment.vertical}}{{/if}};--}}
+                        }
+                    {{/if}}
+                }
+                {{!-- Mobile image --}}
+                @media screen and (max-width: 700px){
+                    #wg-{{getVar "id"}} [data-item-index="{{@index}}"] .item-image {
+                        background-position-x: {{mobileImage.alignment.horizontal}};
+                        background-position-y: {{#if mobileImage.alignment.vertical '===' 'middle'}}center{{else}}{{mobileImage.alignment.vertical}}{{/if}};
+                        {{#if mobileImage.loadImage '==' 'show'}}
+                        background-image: url('{{mobileImage.image.src}}');
+                        {{else if tabletImage.loadImage '==' 'show'}}
+                        background-image: url('{{tabletImage.image.src}}');
+                        {{else}}        
+                        background-image: url('{{desktopImage.image.src}}');
+                        {{/if}}
+                    }
+                }
+            </style>       
+            <div class="item-image">
+                {{#if ../download}}
+                <a href="{{desktopImage.image.src}}" target="_blank" class="button button--primary" download="immagine">Download</a>
+                {{/if}}
+            </div>
+        {{/if}}       
+    </div>
+    {{/each}} 
+</div>

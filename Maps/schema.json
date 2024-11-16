@@ -1,0 +1,153 @@
+[
+	{
+		"type": "array",
+		"label": "Markers",
+		"id": "markers",
+		"defaultCount": 1,
+		"entryLabel": "Marker",
+		"schema": [
+			{
+				"type": "tab",
+				"label": "Content",
+				"sections": [
+					{
+						"settings": [
+							{
+								"type": "input",
+								"label": "Latitude",
+								"id": "lat",
+								"default": "45.01436674877623"
+							},
+							{
+								"type": "input",
+								"label": "Longitude",
+								"id": "lng",
+								"default": "7.6255916709354885"
+							},
+							{
+								"type": "input",
+								"label": "Name",
+								"id": "name",
+								"default": "Biodea"
+							},
+							{
+								"type": "text",
+								"label": "Address",
+								"id": "address",
+								"default": "C.so Unione Sovietica, 603 - 10135 Torino"
+							},
+							{
+								"type": "input",
+								"label": "Web",
+								"id": "web",
+								"default": ""
+							},
+							{
+								"type": "input",
+								"label": "Mail",
+								"id": "mail",
+								"default": "info@golmar.com"
+							},
+							{
+								"type": "input",
+								"label": "Phone",
+								"id": "phone",
+								"default": ""
+							},
+							{
+								"type": "visibility",
+								"label": "Show direction link",
+								"id": "showDirection",
+								"default": "show"
+							},
+							{
+								"type": "visibility",
+								"label": "Show store image",
+								"id": "showImage",
+								"default": "hide"
+							},
+							{
+								"type": "imageManager",
+								"id": "image",
+								"default": {
+								  "src": "https://picsum.photos/250/150",
+								  "type": "IMAGE_MANAGER"
+								},
+								"conditional": {
+								  "key": "showImage",
+								  "operator": "IN",
+								  "value": [
+									"show"
+								  ]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "tab",
+		"label": "Content",
+		"sections": [
+			{
+				"label": "Settings",
+				"settings": [
+					{
+						"type": "range",
+						"label": "Map zoom level",
+						"id": "mapZoom",
+						"default": 8,
+						"typeMeta": {
+							"rangeValues": {
+								"min": 5,
+								"max": 16,
+								"step": 1,
+								"unit": "#"
+							}
+						}
+					},
+					{
+						"type": "number",
+						"label": "Map height",
+						"id": "mapHeight",
+						"default": {
+                            "value": 800,
+                            "type": "px"
+                        }
+					},
+					{
+						"type": "visibility",
+						"label": "Show stores slider",
+						"id": "showSlider",
+						"default": "show"
+					}
+				]
+			},
+			{
+				"label": "Visibility",
+				"settings": [
+					{
+						"type": "boolean",
+						"label": "Hide for desktop",
+						"id": "hideDesktop",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for tablet",
+						"id": "hideTablet",
+						"default": false
+					},
+					{
+						"type": "boolean",
+						"label": "Hide for mobile",
+						"id": "hideMobile",
+						"default": false
+					}
+				]
+			}
+		]
+	}
+]
